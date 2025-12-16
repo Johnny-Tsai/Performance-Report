@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Select-Object -ExpandProperty FullName)",
+      "Bash(python:*)",
+      "Bash(where:*)",
+      "Bash(py:*)",
+      "Bash(del \"D:\\Performance\\2025\\Web\\parse_html.py\")",
+      "Bash(Remove-Item \"D:\\Performance\\2025\\Web\\parse_html.py\")",
+      "Bash(powershell -Command \"Remove-Item ''D:\\Performance\\2025\\Web\\parse_html.py''\")",
+      "Bash(dir /b \"D:\\Performance\\2025\\Web\\*.md\")"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

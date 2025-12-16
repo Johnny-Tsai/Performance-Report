@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+.glass-card {
+  @apply bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl;
+}
+
+.section-title {
+  @apply text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-blue-500;
+}
+
+.kpi-card {
+  @apply bg-gradient-to-br from-blue-500 to-blue-700 text-white rounded-xl p-6 shadow-lg;
+}
+
+.achievement-badge {
+  @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+}
+
+.timeline-item {
+  @apply relative pl-8 pb-8 border-l-2 border-blue-200;
+}
+
+.timeline-item::before {
+  content: '';
+  @apply absolute -left-2 top-0 w-4 h-4 bg-blue-500 rounded-full border-4 border-white;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}

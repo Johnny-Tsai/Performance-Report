@@ -1,0 +1,12 @@
+{
+  "years": [
+    {
+      "year": 2025,
+      "displayName": "2025 年度",
+      "csvPath": "/data/2025/worklist.csv",
+      "screenshotsPath": "/data/2025/screenshots",
+      "isActive": true
+    }
+  ],
+  "defaultYear": 2025
+}
