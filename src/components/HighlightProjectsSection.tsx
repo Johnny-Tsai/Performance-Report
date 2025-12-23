@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { HighlightProject } from '../types/performance';
+import { useYear } from '../hooks/useYear';
 
 interface HighlightProjectsSectionProps {
   projects: HighlightProject[];
@@ -7,9 +8,23 @@ interface HighlightProjectsSectionProps {
 
 export function HighlightProjectsSection({ projects }: HighlightProjectsSectionProps) {
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const { getScreenshotPath } = useYear();
 
   const toggleExpand = (id: string) => {
     setExpandedId(expandedId === id ? null : id);
+  };
+
+  // 處理截圖路徑
+  const resolveScreenshotPath = (imagePath: string) => {
+    // 如果路徑已經包含專案代碼 (如 'QM/2025-12-01_164213.png')，需要提取出來
+    if (imagePath.includes('/')) {
+      const parts = imagePath.split('/');
+      const projectCode = parts[0];
+      const filename = parts.slice(1).join('/');
+      return getScreenshotPath(projectCode, filename);
+    }
+    // 如果只有檔名，回傳原路徑
+    return imagePath;
   };
 
   const renderStars = (count: number) => {
@@ -127,7 +142,7 @@ export function HighlightProjectsSection({ projects }: HighlightProjectsSectionP
                           </div>
                           <div className="p-3">
                             <img
-                              src={screenshot.image}
+                              src={resolveScreenshotPath(screenshot.image)}
                               alt={screenshot.name}
                               className="w-full rounded border border-gray-200 mb-2"
                             />

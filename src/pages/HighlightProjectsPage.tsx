@@ -36,16 +36,14 @@ export function HighlightProjectsPage() {
 
   // 處理截圖路徑
   const resolveScreenshotPath = (project: typeof projects[0], imagePath: string) => {
-    // 如果路徑已經是絕對路徑，需要轉換為年度化路徑
-    if (imagePath.startsWith('/')) {
-      // 提取專案代碼和檔名
-      const parts = imagePath.split('/').filter(Boolean);
-      if (parts.length >= 2) {
-        const projectCode = parts[0];
-        const filename = parts.slice(1).join('/');
-        return getScreenshotPath(projectCode, filename);
-      }
+    // 如果路徑已經包含專案代碼 (如 'QM/2025-12-01_164213.png')，需要提取出來
+    if (imagePath.includes('/')) {
+      const parts = imagePath.split('/');
+      const projectCode = parts[0];
+      const filename = parts.slice(1).join('/');
+      return getScreenshotPath(projectCode, filename);
     }
+    // 如果只有檔名，則使用專案代碼
     return getScreenshotPath(project.code, imagePath);
   };
 
